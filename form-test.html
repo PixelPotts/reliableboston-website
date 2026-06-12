@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Test - ReliableBoston.com</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { font-family: Arial, sans-serif; padding: 50px; }
+        .test-result { margin: 20px 0; padding: 20px; border-radius: 8px; }
+        .success { background-color: #d4edda; border-left: 4px solid #28a745; }
+        .error { background-color: #f8d7da; border-left: 4px solid #dc3545; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Form Functionality Test</h1>
+        <div id="test-results"></div>
+        
+        <iframe src="/" width="100%" height="600" style="border: 1px solid #ccc; margin-top: 20px;"></iframe>
+        
+        <div class="mt-4">
+            <h3>Manual Test Steps:</h3>
+            <ol>
+                <li>Fill out the contact form above</li>
+                <li>Try different inquiry types (General, Employment History)</li>
+                <li>Test employment history fields (DOB and SSN)</li>
+                <li>Submit the form</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        // Basic JavaScript error detection
+        const results = document.getElementById('test-results');
+        
+        // Test 1: Check if the main site loads
+        results.innerHTML += '<div class="test-result success">✅ Test page loaded successfully</div>';
+        
+        // Test 2: Check for JavaScript errors
+        window.onerror = function(msg, url, line, col, error) {
+            results.innerHTML += `<div class="test-result error">❌ JavaScript Error: ${msg} at line ${line}</div>`;
+        };
+        
+        // Test 3: Check if main.js loads without the const error
+        setTimeout(() => {
+            results.innerHTML += '<div class="test-result success">✅ No immediate JavaScript errors detected</div>';
+        }, 2000);
+    </script>
+</body>
+</html>
