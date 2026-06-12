@@ -458,16 +458,25 @@ function initContactForm() {
 
         // Employment fields validation (if visible)
         if (inquiryTypeSelect.value === 'employment-history') {
+            // Get employment fields fresh (they might not exist when page loads)
+            const currentEmployeeSSN = document.getElementById('employeeSSN');
+            const currentEmployeeDOB = document.getElementById('employeeDOB');
+            
             // Validate SSN - must be exactly 4 digits
-            if (employeeSSN.value.length !== 4 || !/^\d{4}$/.test(employeeSSN.value)) {
-                isValid = false;
-                employeeSSN.classList.add('is-invalid');
-                employeeSSN.classList.remove('is-valid');
+            if (currentEmployeeSSN && currentEmployeeSSN.value !== undefined) {
+                if (!currentEmployeeSSN.value || currentEmployeeSSN.value.length !== 4 || !/^\d{4}$/.test(currentEmployeeSSN.value)) {
+                    isValid = false;
+                    currentEmployeeSSN.classList.add('is-invalid');
+                    currentEmployeeSSN.classList.remove('is-valid');
+                } else {
+                    currentEmployeeSSN.classList.remove('is-invalid');
+                    currentEmployeeSSN.classList.add('is-valid');
+                }
             }
             
             // Validate DOB - must be a valid date and person must be at least 16 years old
-            if (employeeDOB.value) {
-                const dob = new Date(employeeDOB.value);
+            if (currentEmployeeDOB && currentEmployeeDOB.value) {
+                const dob = new Date(currentEmployeeDOB.value);
                 const today = new Date();
                 let calculatedAge = today.getFullYear() - dob.getFullYear();
                 const monthDiff = today.getMonth() - dob.getMonth();
@@ -478,9 +487,17 @@ function initContactForm() {
                 
                 if (calculatedAge < 16 || dob > today) {
                     isValid = false;
-                    employeeDOB.classList.add('is-invalid');
-                    employeeDOB.classList.remove('is-valid');
+                    currentEmployeeDOB.classList.add('is-invalid');
+                    currentEmployeeDOB.classList.remove('is-valid');
+                } else {
+                    currentEmployeeDOB.classList.remove('is-invalid');
+                    currentEmployeeDOB.classList.add('is-valid');
                 }
+            } else if (currentEmployeeDOB && !currentEmployeeDOB.value) {
+                // DOB is required for employment history
+                isValid = false;
+                currentEmployeeDOB.classList.add('is-invalid');
+                currentEmployeeDOB.classList.remove('is-valid');
             }
         }
 
