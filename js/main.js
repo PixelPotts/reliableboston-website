@@ -469,14 +469,14 @@ function initContactForm() {
             if (employeeDOB.value) {
                 const dob = new Date(employeeDOB.value);
                 const today = new Date();
-                let age = today.getFullYear() - dob.getFullYear();
+                let calculatedAge = today.getFullYear() - dob.getFullYear();
                 const monthDiff = today.getMonth() - dob.getMonth();
                 
                 if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
-                    age--;
+                    calculatedAge--;
                 }
                 
-                if (age < 16 || dob > today) {
+                if (calculatedAge < 16 || dob > today) {
                     isValid = false;
                     employeeDOB.classList.add('is-invalid');
                     employeeDOB.classList.remove('is-valid');
