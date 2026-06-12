@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ReliableBoston.com - Test Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+        .success { color: green; font-size: 24px; }
+        .info { color: #666; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <h1 class="success">✅ ReliableBoston.com is LIVE!</h1>
+    <p class="info">DNS configuration successful</p>
+    <p class="info">SSL certificate active</p>
+    <p class="info">Deployment timestamp: <span id="timestamp"></span></p>
+    <p><a href="index.html">Go to Main Website</a></p>
+    
+    <script>
+        document.getElementById('timestamp').textContent = new Date().toLocaleString();
+    </script>
+</body>
+</html>

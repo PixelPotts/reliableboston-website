@@ -1,0 +1,31 @@
+# This workflow is optional - Cloudflare Pages handles deployment automatically
+# This file is here for reference and future CI/CD enhancements
+
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Validate HTML
+      run: |
+        # Optional: Add HTML validation
+        echo "HTML validation would go here"
+    
+    - name: Optimize Images
+      run: |
+        # Optional: Add image optimization
+        echo "Image optimization would go here"
+    
+    - name: Deploy to Cloudflare Pages
+      run: |
+        echo "Cloudflare Pages handles deployment automatically"
+        echo "This workflow is for future enhancements"

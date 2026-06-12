@@ -1,0 +1,9 @@
+# Redirect old aerospace manufacturing path to home
+/aerospace-manufacturing/ / 301
+/aerospace-manufacturing /  301
+
+# Redirect any PHP files to home (if accessed)
+/*.php / 301
+
+# Ensure trailing slashes are handled
+/* /index.html 200
