@@ -66,7 +66,7 @@ Website automatically deploys to https://reliableboston.com on every push to the
 The contact form uses Formspree endpoint: `https://formspree.io/f/mojzkppd`
 
 ### Form Features:
-- Name, email, phone, company fields
+- Name, email, company fields
 - Inquiry type dropdown with conditional employment fields
 - File attachment support (PDF, DOC, DOCX, TXT)
 - Real-time validation
@@ -123,7 +123,7 @@ When "Employment History" is selected, additional fields appear:
 For technical support or questions:
 - Create an issue in this repository
 - Contact: info@reliableboston.com
-- Phone: 602.231.8616
+- Location: Boston, MA
 
 ---
 

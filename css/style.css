@@ -772,16 +772,11 @@ h4 {
     margin-top: auto;
 }
 
-.footer .phone {
+.footer .location {
     color: var(--white);
     font-size: 1.25rem;
     font-weight: 600;
-    text-decoration: none;
     margin-right: 1rem;
-}
-
-.footer .phone:hover {
-    color: var(--primary-blue);
 }
 
 .footer .fab {
