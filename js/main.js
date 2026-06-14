@@ -249,14 +249,20 @@ function initNavigation() {
         }
     });
 
-    // Close mobile menu when clicking on a link
-    navbarCollapse.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-            if (window.innerWidth < 992 && navbarCollapse.classList.contains('show')) {
-                const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
-                    toggle: false
-                });
-                bsCollapse.hide();
+    // Close mobile menu when clicking on navigation links or dropdown items
+    navbarCollapse.querySelectorAll('.nav-link, .dropdown-item').forEach(link => {
+        link.addEventListener('click', (e) => {
+            // Only close menu for actual navigation links (not dropdown toggles)
+            if (link.getAttribute('href') && link.getAttribute('href').startsWith('#')) {
+                // Let the link work first, then close the menu
+                setTimeout(() => {
+                    if (window.innerWidth < 1200 && navbarCollapse.classList.contains('show')) {
+                        const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+                            toggle: false
+                        });
+                        bsCollapse.hide();
+                    }
+                }, 100);
             }
         });
     });
