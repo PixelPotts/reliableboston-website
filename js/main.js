@@ -252,8 +252,11 @@ function initNavigation() {
     // Close mobile menu when clicking on navigation links or dropdown items
     navbarCollapse.querySelectorAll('.nav-link, .dropdown-item').forEach(link => {
         link.addEventListener('click', (e) => {
-            // Only close menu for actual navigation links (not dropdown toggles)
-            if (link.getAttribute('href') && link.getAttribute('href').startsWith('#')) {
+            const href = link.getAttribute('href');
+            const isDropdownToggle = link.classList.contains('dropdown-toggle');
+            
+            // Only close menu for actual navigation links (not dropdown toggles with href="#")
+            if (href && href.startsWith('#') && href !== '#' && !isDropdownToggle) {
                 // Let the link work first, then close the menu
                 setTimeout(() => {
                     if (window.innerWidth < 1200 && navbarCollapse.classList.contains('show')) {
